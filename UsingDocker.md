@@ -46,11 +46,27 @@ logs `docker logs <Container_ID/image_name>`
 # Executing in Docker
 
 docker exec list `docker exec <name_container> ls`
-docker exec sh `docker exec -it <name_container> sh`
+docker exec shell `docker exec -it <name_container> sh`
 
-# Docker Stop&Start
+# Docker Stop&Start Container
 
 stop docker running `docker stop <container_ID>`
 start docker `docker start <container_ID>`
 
-# Docker
+# Docker Remove Container
+
+remove `docker rm <container_ID>`
+remove force `docker rm -f <container_ID>`
+
+# Docker Volume
+
+create volume `docker volume create app-data`
+inspect volume `docker volume inspect app-data`
+run docker with volume `docker run -d -p 4000:3000 -v <name_volume_what_you_want>:/app/data <filename>`
+---- or -----------
+run docker with volume `docker run -d -p 4000:3000 -v $(pwd):/app <filename>`
+
+# Remove WorkSpace
+
+remove all container `docker container rm -f $(docker container ls -aq)`
+remove all image `docker image rm -f $(docker image ls -q)`
