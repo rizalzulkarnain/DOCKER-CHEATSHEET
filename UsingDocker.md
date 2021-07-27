@@ -20,10 +20,10 @@ change tag `docker tag <IMAGE ID> <filename>:<name_tag>`
 
 list container running `docker ps`
 run development: `docker run <filename>`
-run background development `docker run -d <filename>`\
+run background development `docker run -d <filename>`
 run background with name `docker run --name <name_what_you_want> -d <filename>`
 run background with name&port `docker run -d -p 3001:3000 --name <name_what_you_want> <filename>`
-run production: `docker-compose -f docker-compose.prod.yml build`
+run production:`docker-compose -f docker-compose.prod.yml build`
 
 # Docker Push to DockerHub
 
@@ -43,10 +43,11 @@ example: docker load -i react-app.tar
 
 logs `docker logs <Container_ID/image_name>`
 
-# Executing in Docker
+# Docker Executing
 
 docker exec list `docker exec <name_container> ls`
-docker exec shell `docker exec -it <name_container> sh`
+docker exec shell `docker exec -it <name_container/image_id> sh`
+docker exec shell as root `docker exec -it -u root <name_container/image_id> sh`
 
 # Docker Stop&Start Container
 
@@ -70,3 +71,34 @@ run docker with volume `docker run -d -p 4000:3000 -v $(pwd):/app <filename>`
 
 remove all container `docker container rm -f $(docker container ls -aq)`
 remove all image `docker image rm -f $(docker image ls -q)`
+
+# Docker Compose
+
+build `docker-compose build`
+run `docker-compose up`
+run background `docker-compose up -d`
+stop `docker-compose down`
+run&build production background `docker-compose -f docker-compose.prod.yml -d --build`
+
+# Docker Compose Network
+
+list network `docker network ls`
+logs `docker-compose logs`
+
+# Docker Machine
+
+---Digital Ocean---
+create `docker create \`
+`--driver digitalocean \`
+`--digitalocean-access-token <TOKEN>`
+`--engine-install-url "https://releases.rancher.com/install-docker/19.03.9.sh" \ name;`
+`<your_filename>`
+list server running `docker-machine ls`
+using ssh `docker-machine ssh <filename>`
+
+# Docker Env
+
+check `docker-machine env <filename>`
+`eval $(docker-machine env <filename>)`
+
+activate `docker-machine activate <filename>`
