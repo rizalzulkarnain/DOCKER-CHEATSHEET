@@ -19,7 +19,7 @@ change tag `docker tag <IMAGE ID> <filename>:<name_tag>`
 # Docker Running
 
 list container running `docker ps`
-run development: `docker run <filename>`
+run development: `docker run -it <filename>`
 run background development `docker run -d <filename>`
 run background with name `docker run --name <name_what_you_want> -d <filename>`
 run background with name&port `docker run -d -p 3001:3000 --name <name_what_you_want> <filename>`
@@ -45,9 +45,10 @@ logs `docker logs <Container_ID/image_name>`
 
 # Docker Executing
 
-docker exec list `docker exec <name_container> ls`
-docker exec shell `docker exec -it <name_container/image_id> sh`
-docker exec shell as root `docker exec -it -u root <name_container/image_id> sh`
+list container active `docker ps`
+docker exec list `docker exec <name_container/container_id> ls`
+docker exec shell `docker exec -it <name_container/container_id> sh`
+docker exec shell as root `docker exec -it -u root <name_container/container_id> sh`
 
 # Docker Stop&Start Container
 
